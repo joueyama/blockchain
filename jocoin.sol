@@ -3,38 +3,38 @@
 // Version of compiler
 pragma solidity ^0.5.0;
 
-contract hadcoin_ico {
+contract jocoin_ico {
 
-    // Introducing the maximum number of Hadcoins for sale
-    uint public max_hadcoins = 1000000;
+    // Imprimindo o número máximo de jocoins à venda
+    uint public max_jocoins = 1000000;
 
-    // Introducing the USD to Hadcoins converstion rate
+    // Imprimindo a taxa de conversão de USD para jocoins
     uint public usd_to_hadcoins = 1000;
 
-    // Introducing the total number of Hadcoins that have been bought by investors
+    // Imprimindo o número total de jocoins que foram comprados por investidores
     uint public total_hadcoins_bought = 0;
 
-    // Mapping from the investor address to its equity in Hadcoins to USD
+    // Mapeamento do endereço do investidor para seu patrimônio em jocoins para USD
     mapping(address => uint) equity_hadcoins;
     mapping(address => uint) equity_usd;
 
-    // Checking if an investor can buy Hadcoins
+    // Verificando se um investidor pode comprar jocoins
     modifier can_buy_hadcoins(uint usd_invested) {
         require (usd_invested * usd_to_hadcoins + total_hadcoins_bought <= max_hadcoins);
         _;
     }
 
-    // Getting the equity in Hadcoins of an investor
+    // Obtendo o patrimônio em jocoins de um investidor
     function equity_in_hadcoins(address investor) external view returns (uint) {
         return equity_hadcoins[investor];
     }
 
-    // Getting the equity in USD of an investor
+    // Obtendo o patrimônio em dólares de um investidor
     function equity_in_usd(address investor) external view returns (uint) {
         return equity_usd[investor];
     }
 
-    // Buying Hadcoins
+    // Comprando jocoins
     function buy_hadcoins(address investor, uint usd_invested) external
     can_buy_hadcoins(usd_invested) {
         uint hadcoins_bought = usd_invested * usd_to_hadcoins;
@@ -43,7 +43,7 @@ contract hadcoin_ico {
         total_hadcoins_bought += hadcoins_bought;
     }
 
-    // Selling Hadcoins
+    // Vendendo jocoins
     function sell_hadcoins(address investor, uint hadcoins_sold) external {
         equity_hadcoins[investor] -= hadcoins_sold;
         equity_usd[investor] = equity_hadcoins[investor] / 1000;
