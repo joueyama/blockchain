@@ -24,6 +24,7 @@ contract jocoin_ico {
         _;
     }
 
+    // Verificando se o investidor tem jocoins suficiente para a transação
     modifier has_jocoins(address investor, uint jocoins_sold) {
         require (equity_jocoins[investor] >= jocoins_sold, " ** No balance ** ");
         _;
