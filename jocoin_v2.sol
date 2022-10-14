@@ -20,12 +20,12 @@ contract jocoin_ico {
 
     // Verificando se um investidor pode comprar jocoins
     modifier can_buy_jocoins(uint usd_invested) {
-        require (usd_invested * usd_to_jocoins + total_jocoins_bought <= max_jocoins);
+        require (usd_invested * usd_to_jocoins + total_jocoins_bought <= max_jocoins, " ** No Jocoins left ** ");
         _;
     }
 
     modifier has_jocoins(address investor, uint jocoins_sold) {
-        require (equity_jocoins[investor] >= jocoins_sold);
+        require (equity_jocoins[investor] >= jocoins_sold, " ** No balance ** ");
         _;
     }
     
