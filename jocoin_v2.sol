@@ -1,4 +1,5 @@
 // Code based on jocoins ICO https://github.com/hagenderouen/mini-chain/blob/master/hadcoins_ico.sol
+// v3 should allow inform the exchange rate of jocoin to USD
 
 // Version of compiler
 pragma solidity ^0.5.0;
